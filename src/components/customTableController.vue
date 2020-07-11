@@ -1,11 +1,15 @@
 <template>
-  <div class="root" :style="{width:width+'px'}">
+  <div class="root" :style="{ width: width + 'px' }">
     <div class="btn-icon" @click="isShowList = !isShowList">
       <slot name="click-btn">
         <span>点击</span>
       </slot>
     </div>
-    <div class="props-view" :style="{width:width+'px','max-height':height+'px'}" v-if="isShowList">
+    <div
+      class="props-view"
+      :style="{ width: width + 'px', 'max-height': height + 'px' }"
+      v-if="isShowList"
+    >
       <draggable v-model="_allProps" @end="onEnd">
         <transition-group>
           <div
@@ -15,13 +19,24 @@
             :key="item[propsValueKey]"
             @click="clickAction(item)"
           >
-            <div class="iconfont icon-tuodong"></div>
+            <div class="icon-drag-view">
+              <slot name="drag-icon">
+                <span>≡</span>
+              </slot>
+            </div>
             <div
               class="label"
-              :style="{color:isActiveThisProps(item[propsValueKey])?activeColor:''}"
-            >{{item[propsLabelKey]}}</div>
-            <div class="icon-check-view" :style="{color:activeColor}">
-              <slot name="active-icon" v-if="isActiveThisProps(item[propsValueKey])">
+              :style="{
+                color: isActiveThisProps(item[propsValueKey]) ? activeColor : ''
+              }"
+            >
+              {{ item[propsLabelKey] }}
+            </div>
+            <div class="icon-check-view" :style="{ color: activeColor }">
+              <slot
+                name="active-icon"
+                v-if="isActiveThisProps(item[propsValueKey])"
+              >
                 <span>√</span>
               </slot>
             </div>
@@ -175,18 +190,13 @@ export default {
 .item-view:hover {
   background-color: #f5f7fa;
 }
-
-.label {
+.props-view .icon-drag-view {
+  cursor: move;
+}
+.props-view .label {
   flex: 1;
+  margin-left: 10px;
 }
-.props-view .item-view span,
-.props-view .item-view span {
-  width: 30px;
-}
-.props-view .item-view span {
-  text-align: right;
-}
-
 ::-webkit-scrollbar {
   width: 8px;
   background-color: transparent;

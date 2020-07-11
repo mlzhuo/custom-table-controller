@@ -49,6 +49,7 @@ npm install custom-table-controller
 | :---------: | :--------------------------------------: |
 |  click-btn  |   点击显示拖动列表的控件，默认 “点击”    |
 | active-icon | 拖动列表选中状态时，尾部的标志，默认 “√” |
+|  drag-icon  |      拖动列表首部拖动图标，默认 “≡”      |
 
 
 
@@ -116,12 +117,12 @@ export default {
   },
   created() {
     this.allProps = [
-      { label: "生日", value: "dateOfBirth" },
       { label: "职业", value: "career" },
+      { label: "总购物次数", value: "buyNum" },
       { label: "所在地", value: "city" },
-      { label: "第一次购物时间", value: "firstOrderTime" },
+      { label: "生日", value: "dateOfBirth" },
       { label: "最近一次购物时间", value: "lastOrderTime" },
-      { label: "总购物次数", value: "buyNum" }
+      { label: "第一次购物时间", value: "firstOrderTime" }
     ];
   },
   methods: {
