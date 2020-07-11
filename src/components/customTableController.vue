@@ -2,7 +2,7 @@
   <div class="root" :style="{width:width+'px'}">
     <div class="btn-icon" @click="isShowList = !isShowList">
       <slot name="click-btn">
-        <i class="iconfont icon-shezhi"></i>
+        <span>点击</span>
       </slot>
     </div>
     <div class="props-view" :style="{width:width+'px','max-height':height+'px'}" v-if="isShowList">
@@ -22,7 +22,7 @@
             >{{item[propsLabelKey]}}</div>
             <div class="icon-check-view" :style="{color:activeColor}">
               <slot name="active-icon" v-if="isActiveThisProps(item[propsValueKey])">
-                <i class="iconfont icon-jianchacheck35"></i>
+                <span>√</span>
               </slot>
             </div>
           </div>
@@ -143,7 +143,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("../assets/iconfont/iconfont.css");
 .root {
   display: flex;
   flex-direction: column;
@@ -180,11 +179,11 @@ export default {
 .label {
   flex: 1;
 }
-.props-view .item-view .icon-tuodong,
-.props-view .item-view .icon-check-view {
+.props-view .item-view span,
+.props-view .item-view span {
   width: 30px;
 }
-.props-view .item-view .icon-check-view {
+.props-view .item-view span {
   text-align: right;
 }
 
