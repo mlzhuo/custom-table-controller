@@ -12,7 +12,7 @@
 
 
 
-## install
+## Install
 
 ``` bash
 npm install custom-table-controller
@@ -99,7 +99,6 @@ export default {
           career: "boss",
           buyNum: 100,
           city: "上海",
-          sex: "男",
           dateOfBirth: "1996-04-06",
           lastOrderTime: "2019-05-05",
           firstOrderTime: "2019-05-05"
@@ -117,10 +116,11 @@ export default {
   },
   created() {
     this.allProps = [
-      { label: "性别", value: "sex" },
-      { label: "生日", value: "birth" },
+      { label: "生日", value: "dateOfBirth" },
       { label: "职业", value: "career" },
       { label: "所在地", value: "city" },
+      { label: "第一次购物时间", value: "firstOrderTime" },
+      { label: "最近一次购物时间", value: "lastOrderTime" },
       { label: "总购物次数", value: "buyNum" }
     ];
   },
