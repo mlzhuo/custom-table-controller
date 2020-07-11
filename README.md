@@ -8,7 +8,7 @@
 
 ## ScreenShot
 
-![](https://github.com/mlzhuo/custom-table-controller/blob/master/Screenshot/example.gif)
+![](https://github.com/mlzhuo/custom-table-controller/blob/master/screenshot/example.gif)
 
 
 
