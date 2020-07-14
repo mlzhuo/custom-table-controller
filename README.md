@@ -45,11 +45,12 @@ npm install custom-table-controller
 
 ## Slot
 
-|    name     |                   说明                   |
-| :---------: | :--------------------------------------: |
-|  click-btn  |   点击显示拖动列表的控件，默认 “点击”    |
-| active-icon | 拖动列表选中状态时，尾部的标志，默认 “√” |
-|  drag-icon  |      拖动列表首部拖动图标，默认 “≡”      |
+|    name     |                    说明                     |
+| :---------: | :-----------------------------------------: |
+|  click-btn  | 点击显示拖动列表的控件，默认 “设置齿轮icon” |
+| active-icon |  拖动列表选中状态时，尾部的标志，默认 “√”   |
+|  drag-icon  |       拖动列表首部拖动图标，默认 “≡”        |
+| list-header | 拖动列表头部，默认“表头设置” & “X” 关闭按钮 |
 
 
 
@@ -63,12 +64,12 @@ npm install custom-table-controller
         <tr>
           <th 
             v-for="(item,index) in checkProps" 
-            :key="index">{{item[propsLabelKey]}}</th>
+            :key="index">{{item.label}}</th>
         </tr>
         <tr v-for="(eachItem, eachIndex) in tableData" :key="eachIndex">
             <td 
               v-for="(item,index) in checkProps" 
-              :key="index">{{eachItem[item[propsValueKey]]}}</td>
+              :key="index">{{eachItem[item.value]}}</td>
         </tr>
       </table>
     </div>
@@ -78,12 +79,6 @@ npm install custom-table-controller
         @updateCheckProps="updateCheckProps"
         @updateAllProps="updateAllProps"
         :allProps="allProps"
-        :propsLabelKey="propsLabelKey"
-        :propsValueKey="propsValueKey"
-        :width="width"
-        :height="height"
-        :itemStyle="itemStyle"
-        :activeColor="activeColor"
       ></customTableController>
     </div>
   </div>
@@ -106,13 +101,7 @@ export default {
         }
       ],
       checkProps: [],
-      allProps: [],
-      propsLabelKey: "label",
-      propsValueKey: "value",
-      width: 200,
-      height: 300,
-      itemStyle: {},
-      activeColor: "#409eff"
+      allProps: []
     };
   },
   created() {

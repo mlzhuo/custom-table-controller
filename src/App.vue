@@ -4,12 +4,12 @@
       <table border>
         <tr>
           <th v-for="(item, index) in checkProps" :key="index">
-            {{ item[propsLabelKey] }}
+            {{ item.label }}
           </th>
         </tr>
         <tr v-for="(eachItem, eachIndex) in tableData" :key="eachIndex">
           <td v-for="(item, index) in checkProps" :key="index">
-            {{ eachItem[item[propsValueKey]] }}
+            {{ eachItem[item.value] }}
           </td>
         </tr>
       </table>
@@ -20,12 +20,6 @@
         @updateCheckProps="updateCheckProps"
         @updateAllProps="updateAllProps"
         :allProps="allProps"
-        :propsLabelKey="propsLabelKey"
-        :propsValueKey="propsValueKey"
-        :width="width"
-        :height="height"
-        :itemStyle="itemStyle"
-        :activeColor="activeColor"
       ></customTableController>
     </div>
   </div>
@@ -56,13 +50,7 @@ export default {
         }
       ],
       checkProps: [],
-      allProps: [],
-      propsLabelKey: "label",
-      propsValueKey: "value",
-      width: 200,
-      height: 300,
-      itemStyle: {},
-      activeColor: "#409eff"
+      allProps: []
     };
   },
   created() {

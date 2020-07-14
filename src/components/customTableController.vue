@@ -2,7 +2,7 @@
   <div class="root" :style="{ width: width + 'px' }">
     <div class="btn-icon" @click="isShowList = !isShowList">
       <slot name="click-btn">
-        <span>点击</span>
+        <span class="iconfont icon-shezhi"></span>
       </slot>
     </div>
     <div
@@ -10,6 +10,15 @@
       :style="{ width: width + 'px', 'max-height': height + 'px' }"
       v-if="isShowList"
     >
+      <slot name="list-header">
+        <div class="header">
+          表头设置
+          <span
+            class="iconfont icon-cuohao"
+            @click="isShowList = !isShowList"
+          ></span>
+        </div>
+      </slot>
       <draggable v-model="_allProps" @end="onEnd">
         <transition-group>
           <div
@@ -21,7 +30,7 @@
           >
             <div class="icon-drag-view">
               <slot name="drag-icon">
-                <span>≡</span>
+                <span class="iconfont icon-tuodong"></span>
               </slot>
             </div>
             <div
@@ -37,7 +46,7 @@
                 name="active-icon"
                 v-if="isActiveThisProps(item[propsValueKey])"
               >
-                <span>√</span>
+                <span class="iconfont icon-jianchacheck35"></span>
               </slot>
             </div>
           </div>
@@ -158,6 +167,7 @@ export default {
 </script>
 
 <style scoped>
+@import url("../assets/style.css");
 .root {
   display: flex;
   flex-direction: column;
@@ -169,7 +179,7 @@ export default {
 }
 .props-view {
   overflow-y: auto;
-  padding: 10px 0;
+  padding: 10px;
   border: 1px solid #e4e7ed;
   border-radius: 4px;
   background-color: #fff;
@@ -178,9 +188,26 @@ export default {
   margin: 5px 0;
   line-height: 34px;
 }
+.props-view .header {
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid #e4e7ed;
+  margin-bottom: 10px;
+}
+.props-view .header span {
+  padding-left: 20px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-weight: normal;
+}
 .props-view .item-view {
   color: #606266;
-  padding: 0 10px;
   font-size: 14px;
   cursor: pointer;
   user-select: none;

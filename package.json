@@ -1,7 +1,7 @@
 {
   "name": "custom-table-controller",
   "description": "控制表格列的显示隐藏，以及基于Vue.Draggable实现列排序。",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "mlzhuo <lzhuo1995@gmail.com>",
   "repository": {
     "type": "git",
