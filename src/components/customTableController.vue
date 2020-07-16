@@ -13,17 +13,14 @@
       <slot name="list-header">
         <div class="header">
           表头设置
-          <span
-            class="iconfont icon-cuohao"
-            @click="isShowList = !isShowList"
-          ></span>
+          <span class="iconfont icon-cuohao" @click="isShowList = !isShowList"></span>
         </div>
       </slot>
       <draggable v-model="_allProps" @end="onEnd">
         <transition-group>
           <div
             class="item-view"
-            v-for="item in _allProps"
+            v-for="(item, index) in _allProps"
             :style="itemStyle"
             :key="item[propsValueKey]"
             @click="clickAction(item)"
@@ -38,14 +35,9 @@
               :style="{
                 color: isActiveThisProps(item[propsValueKey]) ? activeColor : ''
               }"
-            >
-              {{ item[propsLabelKey] }}
-            </div>
+            >{{ item[propsLabelKey] }}</div>
             <div class="icon-check-view" :style="{ color: activeColor }">
-              <slot
-                name="active-icon"
-                v-if="isActiveThisProps(item[propsValueKey])"
-              >
+              <slot name="active-icon" v-if="isActiveThisProps(item[propsValueKey])">
                 <span class="iconfont icon-jianchacheck35"></span>
               </slot>
             </div>
@@ -63,6 +55,13 @@ export default {
   props: {
     // table 表头字段
     allProps: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+      required: true
+    },
+    checkProps: {
       type: Array,
       default: () => {
         return [];
@@ -107,19 +106,20 @@ export default {
         return [...this.allProps];
       },
       set() {}
+    },
+    _checkProps: {
+      get() {
+        return [...this.checkProps];
+      },
+      set() {}
     }
   },
   data() {
     return {
-      isShowList: false,
-      _checkProps: []
+      isShowList: false
     };
   },
-  created() {
-    // 默认全部显示
-    this._checkProps = [...this._allProps];
-    this.$emit("updateCheckProps", this._checkProps);
-  },
+  created() {},
   methods: {
     clickAction(data) {
       const value = data[this.propsValueKey];
@@ -149,7 +149,6 @@ export default {
       const tempItem = this._allProps[oldIndex];
       tempArr.splice(oldIndex, 1);
       tempArr.splice(newIndex, 0, tempItem);
-      this.$emit("updateAllProps", tempArr);
 
       let tempCheckArr = [];
       tempArr.forEach(v => {
@@ -160,6 +159,7 @@ export default {
           tempCheckArr.push(v);
         }
       });
+      this.$emit("updateAllProps", tempArr);
       this.$emit("updateCheckProps", tempCheckArr);
     }
   }

@@ -25,6 +25,7 @@ npm install custom-table-controller
 |     参数      |           说明            |  类型  |  默认值  |
 | :-----------: | :-----------------------: | :----: | :------: |
 |   allProps    |      table所有列字段      | Array  |    []    |
+|  checkProps   |      table选中列字段      | Array  |    []    |
 | propsLabelKey |      table列名称字段      | String |  label   |
 | propsValueKey |       table列值字段       | String |  value   |
 |     width     |     展开拖动列表宽度      | Number |   200    |
