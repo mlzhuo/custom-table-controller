@@ -3,14 +3,10 @@
     <div class="table">
       <table border>
         <tr>
-          <th v-for="(item, index) in checkProps" :key="index">
-            {{ item.label }}
-          </th>
+          <th v-for="(item, index) in checkProps" :key="index">{{ item.label }}</th>
         </tr>
         <tr v-for="(eachItem, eachIndex) in tableData" :key="eachIndex">
-          <td v-for="(item, index) in checkProps" :key="index">
-            {{ eachItem[item.value] }}
-          </td>
+          <td v-for="(item, index) in checkProps" :key="index">{{ eachItem[item.value] }}</td>
         </tr>
       </table>
     </div>
@@ -62,6 +58,7 @@ export default {
       { label: "最近一次购物时间", value: "lastOrderTime" },
       { label: "总购物次数", value: "buyNum" }
     ];
+    this.checkProps = [...this.allProps];
   },
   methods: {
     updateCheckProps(checkProps) {

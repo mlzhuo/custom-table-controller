@@ -179,7 +179,7 @@ export default {
 }
 .props-view {
   overflow-y: auto;
-  padding: 10px;
+  padding: 10px 0;
   border: 1px solid #e4e7ed;
   border-radius: 4px;
   background-color: #fff;
@@ -200,7 +200,7 @@ export default {
 .props-view .header span {
   padding-left: 20px;
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -213,6 +213,7 @@ export default {
   user-select: none;
   margin: 0;
   display: flex;
+  padding: 0 10px;
 }
 .item-view:hover {
   background-color: #f5f7fa;
