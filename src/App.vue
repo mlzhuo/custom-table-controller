@@ -16,6 +16,7 @@
         @updateCheckProps="updateCheckProps"
         @updateAllProps="updateAllProps"
         :allProps="allProps"
+        :checkProps="checkProps"
       ></customTableController>
     </div>
   </div>
@@ -86,5 +87,7 @@ table {
 }
 .controller-icon {
   margin: 0 auto;
+  width: 50px;
+  height: 50px;
 }
 </style>

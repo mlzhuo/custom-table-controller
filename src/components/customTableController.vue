@@ -1,13 +1,13 @@
 <template>
-  <div class="root" :style="{ width: width + 'px' }">
-    <div class="btn-icon" @click="isShowList = !isShowList">
+  <div class="root">
+    <div ref="btnIconView" class="btn-icon" @click="isShowList = !isShowList">
       <slot name="click-btn">
         <span class="iconfont icon-shezhi"></span>
       </slot>
     </div>
     <div
       class="props-view"
-      :style="{ width: width + 'px', 'max-height': height + 'px' }"
+      :style="{ width: width + 'px', 'max-height': height + 'px', left: listViewPosition + 'px' }"
       v-if="isShowList"
     >
       <slot name="list-header">
@@ -116,10 +116,15 @@ export default {
   },
   data() {
     return {
-      isShowList: false
+      isShowList: false,
+      listViewPosition: ""
     };
   },
-  created() {},
+  created() {
+    this.$nextTick(() => {
+      this.listViewPosition = this.$refs.btnIconView.offsetWidth - this.width;
+    });
+  },
   methods: {
     clickAction(data) {
       const value = data[this.propsValueKey];
@@ -187,6 +192,7 @@ export default {
   box-sizing: border-box;
   margin: 5px 0;
   line-height: 34px;
+  position: relative;
 }
 .props-view .header {
   font-size: 14px;
